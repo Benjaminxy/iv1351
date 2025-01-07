@@ -91,8 +91,7 @@ CREATE TABLE lesson (
     lesson_id INT AUTO_INCREMENT PRIMARY KEY,
     level_id INT NOT NULL,
     instructor_id INT NOT NULL,
-    pricing_scheme_id INT NOT NULL,
-    price DECIMAL(10, 2) NOT NULL
+    pricing_scheme_id INT NOT NULL
 );
 
 CREATE TABLE student_lesson (
@@ -126,16 +125,15 @@ CREATE TABLE ensemble_lesson (
     min_students INT
 );
 
+-- Updated Booking Table to Remove Redundancy
 CREATE TABLE booking (
     booking_id INT AUTO_INCREMENT PRIMARY KEY,
     student_id INT NOT NULL,
     lesson_id INT NOT NULL,
-    lesson_type VARCHAR(50),
     booking_date DATE NOT NULL,
     scheduled_date_time TIMESTAMP,
     duration INT,
-    status VARCHAR(50) NOT NULL,
-    price DECIMAL(10, 2) NOT NULL
+    status VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE rental (
@@ -251,8 +249,6 @@ FOREIGN KEY (lesson_id)
 REFERENCES lesson(lesson_id)
 ON DELETE CASCADE;
 
-
-
 -- Primary Entity Tables
 ALTER TABLE person AUTO_INCREMENT = 1001;
 ALTER TABLE phone AUTO_INCREMENT = 2001;
@@ -267,5 +263,3 @@ ALTER TABLE lesson_instrument AUTO_INCREMENT = 11001;
 ALTER TABLE booking AUTO_INCREMENT = 12001;
 ALTER TABLE rental AUTO_INCREMENT = 13001;
 ALTER TABLE instrument AUTO_INCREMENT = 14001;
-
-
